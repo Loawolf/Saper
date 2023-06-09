@@ -16,8 +16,8 @@ def game(difficulty):
     # Определение размеров окна и клеток для каждого уровня сложности
     DIFFICULTY_LEVELS = {
         "легкий": (10, 10, 10),
-        "средний": (20, 20, 20),
-        "сложный": (25, 25, 30)
+        "средний": (20, 20, 60),
+        "сложный": (25, 25, 80)
     }
 
     ROWS, COLS, MINE_COUNT = DIFFICULTY_LEVELS[difficulty]
@@ -63,7 +63,8 @@ def game(difficulty):
     # Основной игровой цикл
     game_over = False
     win = False
-
+    # Счетчик мин
+    counter = 0
     while not game_over:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -96,6 +97,7 @@ def game(difficulty):
                     elif event.button == 3:  # Правая кнопка мыши
                         if not revealed[row][col]:
                             flags[row][col] = not flags[row][col]
+                            counter += 1
 
         # Очистка окна
         window.fill(GRAY)
@@ -149,6 +151,6 @@ def game(difficulty):
             'Победа!', f"Затраченное время {timer_text}, Сложность: {difficulty}")
     else:
         messagebox.showinfo(
-            'Проигрыш', f"Осталось мин: {MINE_COUNT}, Сложность: {difficulty}")
+            'Проигрыш', f"Осталось мин: {MINE_COUNT-counter}, Сложность: {difficulty}")
     # Завершение Pygame
     pygame.quit()
