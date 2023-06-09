@@ -1,5 +1,5 @@
 from tkinter import *
-import main2
+import main
 
 root = Tk()
 root.title('Сапер')
@@ -16,8 +16,8 @@ def info():
 
 
 Label(text='Реализация игры сапер, для игры выберите сложность: ').pack()
-Button(text='Легкий', command=lambda: main2.game("легкий")).pack()
-Button(text='Средний', command=lambda: main2.game("средний")).pack()
-Button(text='Сложный', command=lambda: main2.game("сложный")).pack()
+Button(text='Легкий', command=lambda: main.game("легкий")).pack()
+Button(text='Средний', command=lambda: main.game("средний")).pack()
+Button(text='Сложный', command=lambda: main.game("сложный")).pack()
 Button(text='Я не умею играть', command=info).pack()
 root.mainloop()
